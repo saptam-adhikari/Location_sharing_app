@@ -1,0 +1,80 @@
+
+.location-tracker-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+  }
+  
+  .title {
+    font-size: 24px;
+    font-weight: bold;
+    text-align: center;
+    color: #3f51b5;
+    margin-bottom: 20px;
+  }
+  
+  .fab-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+  }
+  
+  .fab {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: white;
+    color: #3f51b5;
+    border: none;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out, background-color 0.2s ease-in-out;
+  }
+  
+  .fab:hover {
+    transform: scale(1.1);
+  }
+  
+  .primary-fab {
+    background-color: #4caf50;
+    color: white;
+  }
+  
+  .secondary-fab {
+    background-color: #2196f3;
+    color: white;
+  }
+  
+  .danger-fab {
+    background-color: #f44336;
+    color: white;
+  }
+  
+  .map-container {
+    margin-top: 20px;
+  }
+  
+  .coords {
+    text-align: center;
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  
+  .error-message {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+  }
+  
+  .loading-spinner {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    color: #3f51b5;
+  }
+  
