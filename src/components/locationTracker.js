@@ -4,7 +4,7 @@ import { db } from '../firebaseConfig';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faLocationArrow, faPlay, faStop } from '@fortawesome/free-solid-svg-icons';
-import './LocationTracker.css';  
+import './LocationTracker.css';
 
 const mapContainerStyle = {
   height: "500px",
@@ -29,6 +29,7 @@ const LocationTracker = () => {
         longitude,
         timestamp: new Date(),
       });
+      alert("Current location stored successfully!");  
     } catch (err) {
       setError("Failed to store current location.");
     }
@@ -53,7 +54,7 @@ const LocationTracker = () => {
         (position) => {
           const { latitude, longitude } = position.coords;
           setLocation({ latitude, longitude });
-          storeCurrentLocationInFirebase(latitude, longitude);
+          storeCurrentLocationInFirebase(latitude, longitude); 
           setLoading(false);
         },
         () => {
@@ -67,6 +68,7 @@ const LocationTracker = () => {
       setLoading(false);
     }
   };
+
 
   const handleStartLiveTracking = () => {
     if (navigator.geolocation) {
@@ -96,6 +98,7 @@ const LocationTracker = () => {
     if (watchId !== null) {
       navigator.geolocation.clearWatch(watchId);
       setWatchId(null);
+      alert("Live location tracking stopped.");  
     }
   };
 
@@ -110,14 +113,31 @@ const LocationTracker = () => {
   return (
     <div className="location-tracker-container">
       <h2 className="title">Location Tracker</h2>
+
       <div className="fab-container">
-        <button onClick={handleCurrentLocation} className="fab primary-fab" title="Share Current Location">
+        <button 
+          onClick={handleCurrentLocation} 
+          className="fab primary-fab" 
+          title="Share Current Location"
+        >
           <FontAwesomeIcon icon={faLocationArrow} />
         </button>
-        <button onClick={handleStartLiveTracking} className="fab secondary-fab" disabled={watchId !== null} title="Start Live Sharing">
+
+        <button 
+          onClick={handleStartLiveTracking} 
+          className="fab secondary-fab" 
+          disabled={watchId !== null} 
+          title="Start Live Sharing"
+        >
           <FontAwesomeIcon icon={faPlay} />
         </button>
-        <button onClick={handleStopLiveTracking} className="fab danger-fab" disabled={watchId === null} title="Stop Live Sharing">
+
+        <button 
+          onClick={handleStopLiveTracking} 
+          className="fab danger-fab" 
+          disabled={watchId === null} 
+          title="Stop Live Sharing"
+        >
           <FontAwesomeIcon icon={faStop} />
         </button>
       </div>
@@ -131,6 +151,7 @@ const LocationTracker = () => {
               <FontAwesomeIcon icon={faLocationArrow} /> Latitude: {location.latitude}
             </p>
             <p className="coords">Longitude: {location.longitude}</p>
+
             <LoadScript googleMapsApiKey={GOOGLE_MAPS_API_KEY}>
               <GoogleMap
                 mapContainerStyle={mapContainerStyle}
